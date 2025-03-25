@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Network Attack Prediction</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Network Attack Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="src_bytes">Source File Size (in bytes):</label>
+            <select id="src_bytes" name="src_bytes">
+                <option value="SRC_BY_BL_50">SRC_BY_BL_50</option>
+                <option value="SRC_BY_AB_100">SRC_BY_AB_100</option>
+                <option value="SRC_BY_AB_200">SRC_BY_AB_200</option>
+                <option value="SRC_BY_AB_3000">SRC_BY_AB_3000</option>
+                <option value="SRC_BY_AB_700">SRC_BY_AB_700</option>
+                <option value="SRC_BY_AB_30000">SRC_BY_AB_30000</option>
+                <option value="SRC_BY_AB_8000">SRC_BY_AB_8000</option>
+                <option value="SRC_BY_AB_500">SRC_BY_AB_500</option>
+                <option value="SRC_BY_AB_300">SRC_BY_AB_300</option>
+                <option value="SRC_BY_AB_1000">SRC_BY_AB_1000</option>
+                <option value="SRC_BY_AB_600">SRC_BY_AB_600</option>
+                <option value="SRC_BY_AB_900">SRC_BY_AB_900</option>
+                <option value="SRC_BY_AB_800">SRC_BY_AB_800</option>
+                <option value="SRC_BY_AB_10000">SRC_BY_AB_10000</option>
+                <option value="SRC_BY_AB_2000">SRC_BY_AB_2000</option>
+                <option value="SRC_BY_AB_200000">SRC_BY_AB_200000</option>
+                <option value="SRC_BY_AB_400">SRC_BY_AB_400</option>
+                <option value="SRC_BY_AB_50000">SRC_BY_AB_50000</option>
+                <option value="SRC_BY_AB_5000">SRC_BY_AB_5000</option>
+                <option value="SRC_BY_AB_4000">SRC_BY_AB_4000</option>
+                <option value="SRC_BY_AB_30000000">SRC_BY_AB_30000000</option>
+                <option value="SRC_BY_AB_7000">SRC_BY_AB_7000</option>
+                <option value="SRC_BY_AB_1000000">SRC_BY_AB_1000000</option>
+                <option value="SRC_BY_AB_6000">SRC_BY_AB_6000</option>
+                <option value="SRC_BY_AB_60000">SRC_BY_AB_60000</option>
+                <option value="SRC_BY_AB_100000">SRC_BY_AB_100000</option>
+                <option value="SRC_BY_AB_500000">SRC_BY_AB_500000</option>
+                <option value="SRC_BY_AB_40000">SRC_BY_AB_40000</option>
+                <option value="SRC_BY_AB_9000">SRC_BY_AB_9000</option>
+                <option value="SRC_BY_AB_20000">SRC_BY_AB_20000</option>
+                <option value="SRC_BY_AB_80000">SRC_BY_AB_80000</option>
+                <option value="SRC_BY_AB_90000">SRC_BY_AB_90000</option>
+                <option value="SRC_BY_AB_70000">SRC_BY_AB_70000</option>
+            </select>
+
+            <label for="dst_bytes">Destination File Size (in bytes):</label>
+            <select id="dst_bytes" name="dst_bytes">
+                <option value="DST_BY_BL_50">DST_BY_BL_50</option>
+                <option value="DST_BY_AB_100">DST_BY_AB_100</option>
+                <option value="DST_BY_AB_200">DST_BY_AB_200</option>
+                <option value="DST_BY_AB_300">DST_BY_AB_300</option>
+                <option value="DST_BY_AB_10000">DST_BY_AB_10000</option>
+                <option value="DST_BY_AB_3000">DST_BY_AB_3000</option>
+                <option value="DST_BY_AB_700">DST_BY_AB_700</option>
+                <option value="DST_BY_AB_9000">DST_BY_AB_9000</option>
+                <option value="DST_BY_AB_8000">DST_BY_AB_8000</option>
+                <option value="DST_BY_AB_600">DST_BY_AB_600</option>
+                <option value="DST_BY_AB_2000">DST_BY_AB_2000</option>
+                <option value="DST_BY_AB_7000">DST_BY_AB_7000</option>
+                <option value="DST_BY_AB_1000">DST_BY_AB_1000</option>
+                <option value="DST_BY_AB_4000">DST_BY_AB_4000</option>
+                <option value="DST_BY_AB_5000">DST_BY_AB_5000</option>
+                <option value="DST_BY_AB_500">DST_BY_AB_500</option>
+                <option value="DST_BY_AB_400">DST_BY_AB_400</option>
+                <option value="DST_BY_AB_900">DST_BY_AB_900</option>
+                <option value="DST_BY_AB_6000">DST_BY_AB_6000</option>
+                <option value="DST_BY_AB_300000">DST_BY_AB_300000</option>
+                <option value="DST_BY_AB_20000">DST_BY_AB_20000</option>
+                <option value="DST_BY_AB_800">DST_BY_AB_800</option>
+                <option value="DST_BY_AB_30000">DST_BY_AB_30000</option>
+                <option value="DST_BY_AB_60000">DST_BY_AB_60000</option>
+                <option value="DST_BY_AB_200000">DST_BY_AB_200000</option>
+                <option value="DST_BY_AB_40000">DST_BY_AB_40000</option>
+                <option value="DST_BY_AB_50000">DST_BY_AB_50000</option>
+            </select>
+
+            <label for="protocol_type">Protocol Type:</label>
+            <select id="protocol_type" name="protocol_type" required>
+                <option value="tcp">TCP</option>
+                <option value="udp">UDP</option>
+                <option value="icmp">ICMP</option>
+            </select>
+
+            <label for="flag">Flag:</label>
+            <select id="flag" name="flag" required>
+                <option value="SF">SF</option>
+                <option value="S0">S0</option>
+                <option value="REJ">REJ</option>
+                <option value="RSTO">RSTO</option>
+                <option value="RSTR">RSTR</option>
+                <option value="S1">S1</option>
+                <option value="S2">S2</option>
+                <option value="S3">S3</option>
+            </select>
+
+            <label for="service">Service:</label>
+            <select id="service" name="service" required>
+                <option value="private">private</option>
+                <option value="domain_u">domain_u</option>
+                <option value="http">http</option>
+                <option value="smtp">smtp</option>
+                <option value="ftp_data">ftp_data</option>
+                <option value="ftp">ftp</option>
+                <option value="eco_i">eco_i</option>
+                <option value="other">other</option>
+                <option value="auth">auth</option>
+                <option value="ecr_i">ecr_i</option>
+                <option value="IRC">IRC</option>
+                <option value="X11">X11</option>
+                <option value="finger">finger</option>
+                <option value="time">time</option>
+                <option value="domain">domain</option>
+                <option value="telnet">telnet</option>
+                <option value="pop_3">pop_3</option>
+                <option value="ldap">ldap</option>
+                <option value="login">login</option>
+                <option value="name">name</option>
+                <option value="ntp_u">ntp_u</option>
+                <option value="http_443">http_443</option>
+                <option value="sunrpc">sunrpc</option>
+                <option value="printer">printer</option>
+                <option value="systat">systat</option>
+                <option value="tim_i">tim_i</option>
+                <option value="netstat">netstat</option>
+                <option value="remote_job">remote_job</option>
+                <option value="link">link</option>
+                <option value="urp_i">urp_i</option>
+                <option value="sql_net">sql_net</option>
+                <option value="bgp">bgp</option>
+                <option value="pop_2">pop_2</option>
+                <option value="tftp_u">tftp_u</option>
+                <option value="uucp">uucp</option>
+                <option value="imap4">imap4</option>
+                <option value="pm_dump">pm_dump</option>
+                <option value="nnsp">nnsp</option>
+                <option value="courier">courier</option>
+                <option value="daytime">daytime</option>
+                <option value="iso_tsap">iso_tsap</option>
+                <option value="echo">echo</option>
+                <option value="discard">discard</option>
+                <option value="ssh">ssh</option>
+                <option value="whois">whois</option>
+                <option value="mtp">mtp</option>
+                <option value="gopher">gopher</option>
+                <option value="rje">rje</option>
+                <option value="ctf">ctf</option>
+                <option value="supdup">supdup</option>
+                <option value="hostnames">hostnames</option>
+                <option value="csnet_ns">csnet_ns</option>
+                <option value="uucp_path">uucp_path</option>
+                <option value="nntp">nntp</option>
+                <option value="netbios_ns">netbios_ns</option>
+                <option value="netbios_dgm">netbios_dgm</option>
+                <option value="netbios_ssn">netbios_ssn</option>
+                <option value="vmnet">vmnet</option>
+                <option value="Z39_50">Z39_50</option>
+                <option value="exec">exec</option>
+                <option value="shell">shell</option>
+                <option value="efs">efs</option>
+                <option value="klogin">klogin</option>
+                <option value="kshell">kshell</option>
+                <option value="icmp">icmp</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+        <div class="result">
+            {% if prediction_text %}
+                <p>{{ prediction_text }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

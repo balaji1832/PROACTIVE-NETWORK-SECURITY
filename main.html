@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireshark Guide</title>
+    <style>
+           body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: #f0f8ff;
+            color: #333;
+           }
+
+        .container {
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            background-image: url("https://informationage-production.s3.amazonaws.com/uploads/2022/10/AdobeStock_126698681-1568x882.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        h1, h2 {
+            color: #0056b3;
+            text-align: center;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding: 0 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color:white;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 16px;
+            color: #fff;
+            background: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #0056b3;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #wire {
+            width: 20vw;
+            max-width: 720px;
+            height: 30vh;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 720px;
+            height: 405px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        p{
+            color: white;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Guide to Analyzing Packets in Wireshark</h1>
+
+        <h2>1. Open Wireshark</h2>
+        <p>Launch Wireshark on your system and ensure you have administrative privileges to capture all traffic.</p>
+        <img id="wire" src="static/image/Wireshark.jpg" alt="Opening Wireshark">
+
+        <h2>2. Select a Network Interface</h2>
+        <p>Choose the network interface you want to monitor from the list provided (e.g., Wi-Fi, Ethernet).</p>
+        <img id="wire" src="static/image/network.jpg" alt="Selecting a Network Interface">
+
+        <h2>3. Start Capturing Packets</h2>
+        <p>Click the blue shark fin icon at the top-left corner to start capturing packets. You will see packets appearing in real-time.</p>
+        <img id="wire" src="static/image/capture.jpg" alt="Starting Packet Capture">
+
+        <h2>4. Analyze the Packet Details</h2>
+        <p>Select a packet from the list to view its details. Look for the following information:</p>
+            <li><strong>Source Address (src):</strong> Found under the IP layer; identifies the sender of the packet.</li>
+            <li><strong>Destination Address (dst):</strong> Found under the IP layer; identifies the receiver of the packet.</li>
+            <li><strong>Protocol Type:</strong> Listed in the Protocol column or in the IP layer (e.g., TCP, UDP, ICMP).</li>
+            <li><strong>Flags:</strong> Found in the TCP or UDP layer, such as SYN, ACK, FIN, etc.</li>
+            <li><strong>Service:</strong> Determined by the port numbers in the TCP/UDP layer (e.g., HTTP: Port 80, HTTPS: Port 443).</li>
+        <img id="wire" src="static/image/analyze.png" alt="Packet Details">
+
+        <h2>5. Stop and Save</h2>
+        <p>Click the red square icon to stop the capture. Save the file if needed by navigating to <strong>File > Save As</strong>.</p>
+        <img id="wire" src="static/image/save.png" alt="Stopping Packet Capture">
+
+        <div class="video-container">
+            <h2>Practical Video Guide</h2>
+            <p>Watch this video to see a step-by-step demonstration:</p>
+            <iframe src="https://www.youtube.com/embed/qTaOZrDnMzQ" allowfullscreen></iframe>
+        </div>
+
+        <div class="button-container">
+            <a href="{{ url_for('next_page') }}" class="button">Next Page</a>
+        </div>
+    </div>
+</body>
+</html>
